@@ -1,0 +1,2012 @@
+{
+  "format": "local-qwen-ps.workflow-update",
+  "version": 1,
+  "revision": 1,
+  "publishedAt": "2026-07-29T07:37:31Z",
+  "minPluginVersion": "0.7.5",
+  "notes": "首个在线工作流更新包：内置高清放大与生成通道。",
+  "workflows": [
+    {
+      "workflowId": "2081647850538229762",
+      "sourceWorkflowId": "2081647850538229762",
+      "title": "高清放大",
+      "description": "",
+      "fields": [
+        {
+          "id": "45::padding",
+          "nodeId": "45",
+          "fieldName": "padding",
+          "fieldValue": 128,
+          "fieldType": "INT",
+          "label": "TTP 拼接终图 · padding",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "67::method",
+          "nodeId": "67",
+          "fieldName": "method",
+          "fieldValue": "mkl",
+          "fieldType": "TEXT",
+          "label": "Color Match · method",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "67::strength",
+          "nodeId": "67",
+          "fieldName": "strength",
+          "fieldValue": 0.65,
+          "fieldType": "FLOAT",
+          "label": "Color Match · strength",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "67::multithread",
+          "nodeId": "67",
+          "fieldName": "multithread",
+          "fieldValue": true,
+          "fieldType": "BOOLEAN",
+          "label": "Color Match · multithread",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "46::multiple_of",
+          "nodeId": "46",
+          "fieldName": "multiple_of",
+          "fieldValue": 8,
+          "fieldType": "INT",
+          "label": "🔧 Image Resize · multiple_of",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "46::interpolation",
+          "nodeId": "46",
+          "fieldName": "interpolation",
+          "fieldValue": "lanczos",
+          "fieldType": "TEXT",
+          "label": "🔧 Image Resize · interpolation",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "46::condition",
+          "nodeId": "46",
+          "fieldName": "condition",
+          "fieldValue": "always",
+          "fieldType": "TEXT",
+          "label": "🔧 Image Resize · condition",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "46::method",
+          "nodeId": "46",
+          "fieldName": "method",
+          "fieldValue": "stretch",
+          "fieldType": "TEXT",
+          "label": "🔧 Image Resize · method",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::batch_size",
+          "nodeId": "69",
+          "fieldName": "batch_size",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "SeedVR2 增强 · batch_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::seed",
+          "nodeId": "69",
+          "fieldName": "seed",
+          "fieldValue": 3293632642,
+          "fieldType": "INT",
+          "label": "SeedVR2 增强 · seed",
+          "enabled": true,
+          "random_enabled": true,
+          "options": []
+        },
+        {
+          "id": "69::uniform_batch_size",
+          "nodeId": "69",
+          "fieldName": "uniform_batch_size",
+          "fieldValue": false,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 增强 · uniform_batch_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::latent_noise_scale",
+          "nodeId": "69",
+          "fieldName": "latent_noise_scale",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 增强 · latent_noise_scale",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::temporal_overlap",
+          "nodeId": "69",
+          "fieldName": "temporal_overlap",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 增强 · temporal_overlap",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::resolution",
+          "nodeId": "69",
+          "fieldName": "resolution",
+          "fieldValue": 1080,
+          "fieldType": "INT",
+          "label": "SeedVR2 增强 · resolution",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::color_correction",
+          "nodeId": "69",
+          "fieldName": "color_correction",
+          "fieldValue": "lab",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 增强 · color_correction",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::enable_debug",
+          "nodeId": "69",
+          "fieldName": "enable_debug",
+          "fieldValue": false,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 增强 · enable_debug",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::prepend_frames",
+          "nodeId": "69",
+          "fieldName": "prepend_frames",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 增强 · prepend_frames",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::offload_device",
+          "nodeId": "69",
+          "fieldName": "offload_device",
+          "fieldValue": "cpu",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 增强 · offload_device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::input_noise_scale",
+          "nodeId": "69",
+          "fieldName": "input_noise_scale",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 增强 · input_noise_scale",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "69::max_resolution",
+          "nodeId": "69",
+          "fieldName": "max_resolution",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 增强 · max_resolution",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::encode_tiled",
+          "nodeId": "48",
+          "fieldName": "encode_tiled",
+          "fieldValue": true,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 VAE · encode_tiled",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::encode_tile_overlap",
+          "nodeId": "48",
+          "fieldName": "encode_tile_overlap",
+          "fieldValue": 64,
+          "fieldType": "INT",
+          "label": "SeedVR2 VAE · encode_tile_overlap",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::encode_tile_size",
+          "nodeId": "48",
+          "fieldName": "encode_tile_size",
+          "fieldValue": 512,
+          "fieldType": "INT",
+          "label": "SeedVR2 VAE · encode_tile_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::decode_tiled",
+          "nodeId": "48",
+          "fieldName": "decode_tiled",
+          "fieldValue": true,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 VAE · decode_tiled",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::decode_tile_size",
+          "nodeId": "48",
+          "fieldName": "decode_tile_size",
+          "fieldValue": 512,
+          "fieldType": "INT",
+          "label": "SeedVR2 VAE · decode_tile_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::tile_debug",
+          "nodeId": "48",
+          "fieldName": "tile_debug",
+          "fieldValue": "false",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 VAE · tile_debug",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::offload_device",
+          "nodeId": "48",
+          "fieldName": "offload_device",
+          "fieldValue": "cpu",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 VAE · offload_device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::model",
+          "nodeId": "48",
+          "fieldName": "model",
+          "fieldValue": "ema_vae_fp16.safetensors",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 VAE · model",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::decode_tile_overlap",
+          "nodeId": "48",
+          "fieldName": "decode_tile_overlap",
+          "fieldValue": 64,
+          "fieldType": "INT",
+          "label": "SeedVR2 VAE · decode_tile_overlap",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "48::device",
+          "nodeId": "48",
+          "fieldName": "device",
+          "fieldValue": "cuda:0",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 VAE · device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "49::filename_prefix",
+          "nodeId": "49",
+          "fieldName": "filename_prefix",
+          "fieldValue": "最终",
+          "fieldType": "TEXT",
+          "label": "Save Image · filename_prefix",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "29::noise_seed",
+          "nodeId": "29",
+          "fieldName": "noise_seed",
+          "fieldValue": 59840969996426,
+          "fieldType": "INT",
+          "label": "RandomNoise · noise_seed",
+          "enabled": true,
+          "random_enabled": true,
+          "options": []
+        },
+        {
+          "id": "70::multiple_of",
+          "nodeId": "70",
+          "fieldName": "multiple_of",
+          "fieldValue": 8,
+          "fieldType": "INT",
+          "label": "🔧 Image Resize · multiple_of",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "70::interpolation",
+          "nodeId": "70",
+          "fieldName": "interpolation",
+          "fieldValue": "lanczos",
+          "fieldType": "TEXT",
+          "label": "🔧 Image Resize · interpolation",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "70::condition",
+          "nodeId": "70",
+          "fieldName": "condition",
+          "fieldValue": "always",
+          "fieldType": "TEXT",
+          "label": "🔧 Image Resize · condition",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "70::method",
+          "nodeId": "70",
+          "fieldName": "method",
+          "fieldValue": "stretch",
+          "fieldType": "TEXT",
+          "label": "🔧 Image Resize · method",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "50::height_factor",
+          "nodeId": "50",
+          "fieldName": "height_factor",
+          "fieldValue": 3,
+          "fieldType": "INT",
+          "label": "TTP 分块尺寸 · height_factor",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "50::overlap_rate",
+          "nodeId": "50",
+          "fieldName": "overlap_rate",
+          "fieldValue": 0.25,
+          "fieldType": "FLOAT",
+          "label": "TTP 分块尺寸 · overlap_rate",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "50::width_factor",
+          "nodeId": "50",
+          "fieldName": "width_factor",
+          "fieldValue": 3,
+          "fieldType": "INT",
+          "label": "TTP 分块尺寸 · width_factor",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "51::scale_by",
+          "nodeId": "51",
+          "fieldName": "scale_by",
+          "fieldValue": 0.25,
+          "fieldType": "FLOAT",
+          "label": "Upscale Image By · scale_by",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "51::upscale_method",
+          "nodeId": "51",
+          "fieldName": "upscale_method",
+          "fieldValue": "lanczos",
+          "fieldType": "FLOAT",
+          "label": "Upscale Image By · upscale_method",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "31::weight_dtype",
+          "nodeId": "31",
+          "fieldName": "weight_dtype",
+          "fieldValue": "default",
+          "fieldType": "TEXT",
+          "label": "Load Diffusion Model · weight_dtype",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "31::unet_name",
+          "nodeId": "31",
+          "fieldName": "unet_name",
+          "fieldValue": "Flux2-Klein-9B-True-v2-fp8mixed.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load Diffusion Model · unet_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "32::clip_name",
+          "nodeId": "32",
+          "fieldName": "clip_name",
+          "fieldValue": "qwen_3_8b_fp8mixed.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · clip_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "32::type",
+          "nodeId": "32",
+          "fieldName": "type",
+          "fieldValue": "flux2",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · type",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "32::device",
+          "nodeId": "32",
+          "fieldName": "device",
+          "fieldValue": "default",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "33::megapixels",
+          "nodeId": "33",
+          "fieldName": "megapixels",
+          "fieldValue": 4,
+          "fieldType": "INT",
+          "label": "Scale Image to Total Pixels · megapixels",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "33::resolution_steps",
+          "nodeId": "33",
+          "fieldName": "resolution_steps",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "Scale Image to Total Pixels · resolution_steps",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "33::upscale_method",
+          "nodeId": "33",
+          "fieldName": "upscale_method",
+          "fieldValue": "lanczos",
+          "fieldType": "FLOAT",
+          "label": "Scale Image to Total Pixels · upscale_method",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "55::vae_name",
+          "nodeId": "55",
+          "fieldName": "vae_name",
+          "fieldValue": "flux2-vae.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load VAE · vae_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "99::attention_mode",
+          "nodeId": "99",
+          "fieldName": "attention_mode",
+          "fieldValue": "sdpa",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load DiT Model · attention_mode",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "99::swap_io_components",
+          "nodeId": "99",
+          "fieldName": "swap_io_components",
+          "fieldValue": false,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 (Down)Load DiT Model · swap_io_components",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "99::offload_device",
+          "nodeId": "99",
+          "fieldName": "offload_device",
+          "fieldValue": "none",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load DiT Model · offload_device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "99::model",
+          "nodeId": "99",
+          "fieldName": "model",
+          "fieldValue": "seedvr2_ema_7b-Q8_K_M.gguf",
+          "fieldType": "INT",
+          "label": "SeedVR2 (Down)Load DiT Model · model",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "99::device",
+          "nodeId": "99",
+          "fieldName": "device",
+          "fieldValue": "cuda:0",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load DiT Model · device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "99::blocks_to_swap",
+          "nodeId": "99",
+          "fieldName": "blocks_to_swap",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 (Down)Load DiT Model · blocks_to_swap",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "57::start_step",
+          "nodeId": "57",
+          "fieldName": "start_step",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "LCS Sharpness Intervene · start_step",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "57::strength",
+          "nodeId": "57",
+          "fieldName": "strength",
+          "fieldValue": -0.5,
+          "fieldType": "FLOAT",
+          "label": "LCS Sharpness Intervene · strength",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "57::end_step",
+          "nodeId": "57",
+          "fieldName": "end_step",
+          "fieldValue": 4,
+          "fieldType": "INT",
+          "label": "LCS Sharpness Intervene · end_step",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "58::mode",
+          "nodeId": "58",
+          "fieldName": "mode",
+          "fieldValue": "auto",
+          "fieldType": "TEXT",
+          "label": "LCS Color Anchor · mode",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "58::intensity",
+          "nodeId": "58",
+          "fieldName": "intensity",
+          "fieldValue": 0.8,
+          "fieldType": "FLOAT",
+          "label": "LCS Color Anchor · intensity",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "59::text",
+          "nodeId": "59",
+          "fieldName": "text",
+          "fieldValue": "将原图进行高清画质修复与清晰度增强，仅提升画面质量，不改变画面风格、人物风格及整体视觉效果。严格保持原始画面内容、主体姿态、人物身份、五官特征、服装款式、构图、背景环境、光影关系和色彩氛围不变，不新增、不删减、不替换任何物体或细节，也不进行风格化重绘。\n\n仅对画面进行高质量修复与细节还原，重点改善分辨率与清晰度，增强皮肤质感、发丝边缘、布料纹理和环境细节，同时去除噪点、模糊、压缩痕迹、网格感、脏污色块及轻微瑕疵，使画面更加干净、自然、清晰，但整体风格、人物风格和原始观感保持不变。\n\n优化修改这张图，物理现实主义是最高优先级。将图像转变成真正的专业照片。自动删除所有 AI 伪影、CGI 外观、渲染痕迹、合成纹理、不切实际的照明、扭曲的解剖结构、扭曲的几何形状、重复的图案、浮动的主题和人工完美。根据现实世界的物理原理重建照明、阴影、反射、材质、透视和环境交互。保留原始构图、主题、产品设计、比例和场景结构。增强自然皮肤纹理、织物细节、材料真实感、微观缺陷和真实的相机光学。最终结果必须与真实的商业照片没有区别，优先考虑现实主义、物理准确性和摄影真实性而不是风格化。",
+          "fieldType": "TEXT",
+          "label": "CLIP Text Encode (Prompt) · text",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "39::batch_size",
+          "nodeId": "39",
+          "fieldName": "batch_size",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "Flux2 目标潜空间 · batch_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "103::lora_name",
+          "nodeId": "103",
+          "fieldName": "lora_name",
+          "fieldValue": "f2k_9B_lcs_consist_20260415.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load LoRA · lora_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "103::strength_model",
+          "nodeId": "103",
+          "fieldName": "strength_model",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "Load LoRA · strength_model",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "104::lora_name",
+          "nodeId": "104",
+          "fieldName": "lora_name",
+          "fieldValue": "klein_9B_Turbo_r128.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load LoRA · lora_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "104::strength_model",
+          "nodeId": "104",
+          "fieldName": "strength_model",
+          "fieldValue": 0.20000000000000004,
+          "fieldType": "FLOAT",
+          "label": "Load LoRA · strength_model",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "60::cfg",
+          "nodeId": "60",
+          "fieldName": "cfg",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "CFG Guider · cfg",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "109::image",
+          "nodeId": "109",
+          "fieldName": "image",
+          "fieldValue": "367397a41d0c1ea2d82bb10f5a35a01f402337a509c2e5e24e9bd2f03e52e54c.jpg",
+          "fieldType": "IMAGE",
+          "label": "Load Image · image",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "61::steps",
+          "nodeId": "61",
+          "fieldName": "steps",
+          "fieldValue": 4,
+          "fieldType": "INT",
+          "label": "Flux2 调度 / 步数 · steps",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "62::sampler_name",
+          "nodeId": "62",
+          "fieldName": "sampler_name",
+          "fieldValue": "euler",
+          "fieldType": "TEXT",
+          "label": "KSamplerSelect · sampler_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "42::scale_by",
+          "nodeId": "42",
+          "fieldName": "scale_by",
+          "fieldValue": 2,
+          "fieldType": "INT",
+          "label": "Upscale Image By · scale_by",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "42::upscale_method",
+          "nodeId": "42",
+          "fieldName": "upscale_method",
+          "fieldValue": "lanczos",
+          "fieldType": "FLOAT",
+          "label": "Upscale Image By · upscale_method",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        }
+      ],
+      "workflowJson": {
+        "28": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "vae": [
+              "55",
+              0
+            ],
+            "samples": [
+              "30",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "VAE Decode"
+          }
+        },
+        "29": {
+          "class_type": "RandomNoise",
+          "inputs": {
+            "noise_seed": 59840969996426
+          },
+          "_meta": {
+            "title": "RandomNoise"
+          }
+        },
+        "30": {
+          "class_type": "SamplerCustomAdvanced",
+          "inputs": {
+            "guider": [
+              "60",
+              0
+            ],
+            "latent_image": [
+              "39",
+              0
+            ],
+            "noise": [
+              "29",
+              0
+            ],
+            "sigmas": [
+              "61",
+              0
+            ],
+            "sampler": [
+              "62",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "SamplerCustomAdvanced"
+          }
+        },
+        "31": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "weight_dtype": "default",
+            "unet_name": "Flux2-Klein-9B-True-v2-fp8mixed.safetensors"
+          },
+          "_meta": {
+            "title": "Load Diffusion Model"
+          }
+        },
+        "32": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+            "type": "flux2",
+            "device": "default"
+          },
+          "_meta": {
+            "title": "Load CLIP"
+          }
+        },
+        "33": {
+          "class_type": "ImageScaleToTotalPixels",
+          "inputs": {
+            "image": [
+              "109",
+              0
+            ],
+            "megapixels": 4,
+            "resolution_steps": 1,
+            "upscale_method": "lanczos"
+          },
+          "_meta": {
+            "title": "Scale Image to Total Pixels"
+          }
+        },
+        "34": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "33",
+              0
+            ],
+            "vae": [
+              "55",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "VAE Encode"
+          }
+        },
+        "35": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "latent": [
+              "34",
+              0
+            ],
+            "conditioning": [
+              "59",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "正向图像潜空间注入"
+          }
+        },
+        "36": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "latent": [
+              "34",
+              0
+            ],
+            "conditioning": [
+              "37",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "负向潜空间抑制"
+          }
+        },
+        "37": {
+          "class_type": "ConditioningZeroOut",
+          "inputs": {
+            "conditioning": [
+              "59",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Conditioning Zero Out"
+          }
+        },
+        "39": {
+          "class_type": "EmptyFlux2LatentImage",
+          "inputs": {
+            "batch_size": 1,
+            "width": [
+              "63",
+              0
+            ],
+            "height": [
+              "63",
+              1
+            ]
+          },
+          "_meta": {
+            "title": "Flux2 目标潜空间"
+          }
+        },
+        "41": {
+          "class_type": "easy cleanGpuUsed",
+          "inputs": {
+            "anything": [
+              "45",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Clean VRAM Used"
+          }
+        },
+        "42": {
+          "class_type": "ImageScaleBy",
+          "inputs": {
+            "image": [
+              "67",
+              0
+            ],
+            "scale_by": 2,
+            "upscale_method": "lanczos"
+          },
+          "_meta": {
+            "title": "Upscale Image By"
+          }
+        },
+        "44": {
+          "class_type": "Image Comparer (rgthree)",
+          "inputs": {
+            "rgthree_comparer": {
+              "images": [
+                {
+                  "name": "A",
+                  "selected": true,
+                  "url": "/view?filename=rgthree.compare._temp_itste_00001_ihhne_1785138874.jpg&type=temp&subfolder=&rand=0.9970506481164726&Rh-Comfy-Auth=eyJ1c2VySWQiOiIwYjJlZGQzZTE5YzM1MDk1MzNkZTdhZjZmZTg4OTAyYiIsInNpZ25FeHBpcmUiOjE3ODU3NDMyOTc2MzIsInRzIjoxNzg1MTM4NDk3NjMyLCJzaWduIjoiNzEwZmQ3NTJhZGU2NjNkYjk2NTUwM2ZlY2JhMDJmNjQifQ==&Rh-Identify=0b2edd3e19c3509533de7af6fe88902b"
+                },
+                {
+                  "name": "B",
+                  "selected": true,
+                  "url": "/view?filename=rgthree.compare._temp_itste_00002_uvjpy_1785138876.jpg&type=temp&subfolder=&rand=0.5866213842338489&Rh-Comfy-Auth=eyJ1c2VySWQiOiIwYjJlZGQzZTE5YzM1MDk1MzNkZTdhZjZmZTg4OTAyYiIsInNpZ25FeHBpcmUiOjE3ODU3NDMyOTc2MzIsInRzIjoxNzg1MTM4NDk3NjMyLCJzaWduIjoiNzEwZmQ3NTJhZGU2NjNkYjk2NTUwM2ZlY2JhMDJmNjQifQ==&Rh-Identify=0b2edd3e19c3509533de7af6fe88902b"
+                }
+              ]
+            },
+            "image_a": [
+              "109",
+              0
+            ],
+            "image_b": [
+              "45",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Image Comparer (rgthree)"
+          }
+        },
+        "45": {
+          "class_type": "TTP_Image_Assy",
+          "inputs": {
+            "padding": 128,
+            "tiles": [
+              "70",
+              0
+            ],
+            "grid_size": [
+              "47",
+              3
+            ],
+            "positions": [
+              "47",
+              1
+            ],
+            "original_size": [
+              "47",
+              2
+            ]
+          },
+          "_meta": {
+            "title": "TTP 拼接终图"
+          }
+        },
+        "46": {
+          "class_type": "ImageResize+",
+          "inputs": {
+            "multiple_of": 8,
+            "image": [
+              "42",
+              0
+            ],
+            "interpolation": "lanczos",
+            "condition": "always",
+            "method": "stretch",
+            "width": [
+              "53",
+              0
+            ],
+            "height": [
+              "53",
+              1
+            ]
+          },
+          "_meta": {
+            "title": "🔧 Image Resize"
+          }
+        },
+        "47": {
+          "class_type": "TTP_Image_Tile_Batch",
+          "inputs": {
+            "image": [
+              "42",
+              0
+            ],
+            "tile_width": [
+              "50",
+              0
+            ],
+            "tile_height": [
+              "50",
+              1
+            ]
+          },
+          "_meta": {
+            "title": "TTP 切块"
+          }
+        },
+        "48": {
+          "class_type": "SeedVR2LoadVAEModel",
+          "inputs": {
+            "encode_tiled": true,
+            "encode_tile_overlap": 64,
+            "encode_tile_size": 512,
+            "decode_tiled": true,
+            "decode_tile_size": 512,
+            "tile_debug": "false",
+            "offload_device": "cpu",
+            "model": "ema_vae_fp16.safetensors",
+            "decode_tile_overlap": 64,
+            "device": "cuda:0"
+          },
+          "_meta": {
+            "title": "SeedVR2 VAE"
+          }
+        },
+        "49": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "filename_prefix": "最终",
+            "images": [
+              "45",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Save Image"
+          }
+        },
+        "50": {
+          "class_type": "TTP_Tile_image_size",
+          "inputs": {
+            "image": [
+              "46",
+              0
+            ],
+            "height_factor": 3,
+            "overlap_rate": 0.25,
+            "width_factor": 3
+          },
+          "_meta": {
+            "title": "TTP 分块尺寸"
+          }
+        },
+        "51": {
+          "class_type": "ImageScaleBy",
+          "inputs": {
+            "image": [
+              "47",
+              0
+            ],
+            "scale_by": 0.25,
+            "upscale_method": "lanczos"
+          },
+          "_meta": {
+            "title": "Upscale Image By"
+          }
+        },
+        "52": {
+          "class_type": "easy imageSize",
+          "inputs": {
+            "image": [
+              "47",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "ImageSize"
+          }
+        },
+        "53": {
+          "class_type": "easy imageSize",
+          "inputs": {
+            "image": [
+              "42",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "ImageSize"
+          }
+        },
+        "55": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "flux2-vae.safetensors"
+          },
+          "_meta": {
+            "title": "Load VAE"
+          }
+        },
+        "57": {
+          "class_type": "LCSSharpnessIntervene",
+          "inputs": {
+            "start_step": 0,
+            "strength": -0.5,
+            "end_step": 4,
+            "model": [
+              "58",
+              0
+            ],
+            "sharpness_data": [
+              "64",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "LCS Sharpness Intervene"
+          }
+        },
+        "58": {
+          "class_type": "LCSColorAnchor",
+          "inputs": {
+            "mode": "auto",
+            "intensity": 0.8,
+            "lcs_data": [
+              "65",
+              0
+            ],
+            "model": [
+              "103",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "LCS Color Anchor"
+          }
+        },
+        "59": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "text": "将原图进行高清画质修复与清晰度增强，仅提升画面质量，不改变画面风格、人物风格及整体视觉效果。严格保持原始画面内容、主体姿态、人物身份、五官特征、服装款式、构图、背景环境、光影关系和色彩氛围不变，不新增、不删减、不替换任何物体或细节，也不进行风格化重绘。\n\n仅对画面进行高质量修复与细节还原，重点改善分辨率与清晰度，增强皮肤质感、发丝边缘、布料纹理和环境细节，同时去除噪点、模糊、压缩痕迹、网格感、脏污色块及轻微瑕疵，使画面更加干净、自然、清晰，但整体风格、人物风格和原始观感保持不变。\n\n优化修改这张图，物理现实主义是最高优先级。将图像转变成真正的专业照片。自动删除所有 AI 伪影、CGI 外观、渲染痕迹、合成纹理、不切实际的照明、扭曲的解剖结构、扭曲的几何形状、重复的图案、浮动的主题和人工完美。根据现实世界的物理原理重建照明、阴影、反射、材质、透视和环境交互。保留原始构图、主题、产品设计、比例和场景结构。增强自然皮肤纹理、织物细节、材料真实感、微观缺陷和真实的相机光学。最终结果必须与真实的商业照片没有区别，优先考虑现实主义、物理准确性和摄影真实性而不是风格化。",
+            "clip": [
+              "32",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+          }
+        },
+        "60": {
+          "class_type": "CFGGuider",
+          "inputs": {
+            "negative": [
+              "36",
+              0
+            ],
+            "cfg": 1,
+            "model": [
+              "57",
+              0
+            ],
+            "positive": [
+              "35",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "CFG Guider"
+          }
+        },
+        "61": {
+          "class_type": "Flux2Scheduler",
+          "inputs": {
+            "width": [
+              "63",
+              0
+            ],
+            "steps": 4,
+            "height": [
+              "63",
+              1
+            ]
+          },
+          "_meta": {
+            "title": "Flux2 调度 / 步数"
+          }
+        },
+        "62": {
+          "class_type": "KSamplerSelect",
+          "inputs": {
+            "sampler_name": "euler"
+          },
+          "_meta": {
+            "title": "KSamplerSelect"
+          }
+        },
+        "63": {
+          "class_type": "GetImageSize",
+          "inputs": {
+            "image": [
+              "33",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "GetImageSize"
+          }
+        },
+        "64": {
+          "class_type": "LCSSharpnessCalibrate",
+          "inputs": {
+            "lcs_data": [
+              "65",
+              0
+            ],
+            "vae": [
+              "55",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "LCS Sharpness Calibrate"
+          }
+        },
+        "65": {
+          "class_type": "LCSLoadData",
+          "inputs": {
+            "vae": [
+              "55",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "LCS Load Data"
+          }
+        },
+        "67": {
+          "class_type": "ColorMatch",
+          "inputs": {
+            "image_ref": [
+              "109",
+              0
+            ],
+            "method": "mkl",
+            "strength": 0.65,
+            "multithread": true,
+            "image_target": [
+              "28",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Color Match"
+          }
+        },
+        "69": {
+          "class_type": "SeedVR2VideoUpscaler",
+          "inputs": {
+            "image": [
+              "51",
+              0
+            ],
+            "batch_size": 1,
+            "seed": 3293632642,
+            "uniform_batch_size": false,
+            "latent_noise_scale": 0,
+            "temporal_overlap": 0,
+            "resolution": 1080,
+            "dit": [
+              "99",
+              0
+            ],
+            "color_correction": "lab",
+            "enable_debug": false,
+            "prepend_frames": 0,
+            "offload_device": "cpu",
+            "input_noise_scale": 0,
+            "vae": [
+              "48",
+              0
+            ],
+            "max_resolution": 0
+          },
+          "_meta": {
+            "title": "SeedVR2 增强"
+          }
+        },
+        "70": {
+          "class_type": "ImageResize+",
+          "inputs": {
+            "multiple_of": 8,
+            "image": [
+              "69",
+              0
+            ],
+            "interpolation": "lanczos",
+            "condition": "always",
+            "method": "stretch",
+            "width": [
+              "52",
+              0
+            ],
+            "height": [
+              "52",
+              1
+            ]
+          },
+          "_meta": {
+            "title": "🔧 Image Resize"
+          }
+        },
+        "73": {
+          "class_type": "Image Comparer (rgthree)",
+          "inputs": {
+            "rgthree_comparer": {
+              "images": [
+                {
+                  "name": "A",
+                  "selected": true,
+                  "url": "/view?filename=rgthree.compare._temp_qtrjq_00001_vtbjx_1785138822.jpg&type=temp&subfolder=&rand=0.5497220664629217&Rh-Comfy-Auth=eyJ1c2VySWQiOiIwYjJlZGQzZTE5YzM1MDk1MzNkZTdhZjZmZTg4OTAyYiIsInNpZ25FeHBpcmUiOjE3ODU3NDMyOTc2MzIsInRzIjoxNzg1MTM4NDk3NjMyLCJzaWduIjoiNzEwZmQ3NTJhZGU2NjNkYjk2NTUwM2ZlY2JhMDJmNjQifQ==&Rh-Identify=0b2edd3e19c3509533de7af6fe88902b"
+                },
+                {
+                  "name": "B",
+                  "selected": true,
+                  "url": "/view?filename=rgthree.compare._temp_qtrjq_00002_lgopb_1785138824.jpg&type=temp&subfolder=&rand=0.466500035331455&Rh-Comfy-Auth=eyJ1c2VySWQiOiIwYjJlZGQzZTE5YzM1MDk1MzNkZTdhZjZmZTg4OTAyYiIsInNpZ25FeHBpcmUiOjE3ODU3NDMyOTc2MzIsInRzIjoxNzg1MTM4NDk3NjMyLCJzaWduIjoiNzEwZmQ3NTJhZGU2NjNkYjk2NTUwM2ZlY2JhMDJmNjQifQ==&Rh-Identify=0b2edd3e19c3509533de7af6fe88902b"
+                }
+              ]
+            },
+            "image_a": [
+              "109",
+              0
+            ],
+            "image_b": [
+              "67",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Image Comparer (rgthree)"
+          }
+        },
+        "99": {
+          "class_type": "SeedVR2LoadDiTModel",
+          "inputs": {
+            "attention_mode": "sdpa",
+            "swap_io_components": false,
+            "offload_device": "none",
+            "model": "seedvr2_ema_7b-Q8_K_M.gguf",
+            "device": "cuda:0",
+            "blocks_to_swap": 0
+          },
+          "_meta": {
+            "title": "SeedVR2 (Down)Load DiT Model"
+          }
+        },
+        "103": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "lora_name": "f2k_9B_lcs_consist_20260415.safetensors",
+            "strength_model": 1,
+            "model": [
+              "104",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Load LoRA"
+          }
+        },
+        "104": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "lora_name": "klein_9B_Turbo_r128.safetensors",
+            "strength_model": 0.20000000000000004,
+            "model": [
+              "31",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Load LoRA"
+          }
+        },
+        "109": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "367397a41d0c1ea2d82bb10f5a35a01f402337a509c2e5e24e9bd2f03e52e54c.jpg"
+          },
+          "_meta": {
+            "title": "Load Image"
+          }
+        }
+      },
+      "contentHash": "5f226ed5cea3171bd12f755b61cd48484564b5c886a1cb9d68f46e3359d70c9e"
+    },
+    {
+      "workflowId": "2081910991482343426",
+      "sourceWorkflowId": "2081910991482343426",
+      "title": "生成通道",
+      "description": "",
+      "fields": [
+        {
+          "id": "311::scheduler",
+          "nodeId": "311",
+          "fieldName": "scheduler",
+          "fieldValue": "simple",
+          "fieldType": "TEXT",
+          "label": "KSampler · scheduler",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "311::denoise",
+          "nodeId": "311",
+          "fieldName": "denoise",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "KSampler · denoise",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "311::seed",
+          "nodeId": "311",
+          "fieldName": "seed",
+          "fieldValue": 1039940126025312,
+          "fieldType": "INT",
+          "label": "KSampler · seed",
+          "enabled": true,
+          "random_enabled": true,
+          "options": []
+        },
+        {
+          "id": "311::cfg",
+          "nodeId": "311",
+          "fieldName": "cfg",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "KSampler · cfg",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "311::sampler_name",
+          "nodeId": "311",
+          "fieldName": "sampler_name",
+          "fieldValue": "euler",
+          "fieldType": "TEXT",
+          "label": "KSampler · sampler_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "311::steps",
+          "nodeId": "311",
+          "fieldName": "steps",
+          "fieldValue": 5,
+          "fieldType": "INT",
+          "label": "KSampler · steps",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "324::text",
+          "nodeId": "324",
+          "fieldName": "text",
+          "fieldValue": "ng_deepnegative_v1_75t,(badhandv4:1.2),EasyNegative,(worst quality:2),",
+          "fieldType": "TEXT",
+          "label": "CLIP Text Encode (Prompt) · text",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "335::text",
+          "nodeId": "335",
+          "fieldName": "text",
+          "fieldValue": "将这张图片转换为精确的材质分割图，图中每个不同的物体的区域都用完全均匀的纯色填充，相同材质要用完全相同的纯色填充，确保每个区域内无任何颜色变化，且与所有物体边界实现像素级精准对齐。但要注意带图案的材质不需要按图案区分而是让带图案的材质显示为一个颜色",
+          "fieldType": "TEXT",
+          "label": "文本 · text",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "336::clip_name",
+          "nodeId": "336",
+          "fieldName": "clip_name",
+          "fieldValue": "qwen_3_8b_fp8mixed.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · clip_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "336::type",
+          "nodeId": "336",
+          "fieldName": "type",
+          "fieldValue": "flux2",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · type",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "336::device",
+          "nodeId": "336",
+          "fieldName": "device",
+          "fieldValue": "default",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "304::lora_name",
+          "nodeId": "304",
+          "fieldName": "lora_name",
+          "fieldValue": "一键通道图丨辅助PS魔棒选中材质_FLUX.2.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load LoRA · lora_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "304::strength_model",
+          "nodeId": "304",
+          "fieldName": "strength_model",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "Load LoRA · strength_model",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "315::image",
+          "nodeId": "315",
+          "fieldName": "image",
+          "fieldValue": "pasted/880168f34b98443df69672749da003705584bc77a37d242ae121233ed8c0fabf.png",
+          "fieldType": "IMAGE",
+          "label": "Load Image · image",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "305::weight_dtype",
+          "nodeId": "305",
+          "fieldName": "weight_dtype",
+          "fieldValue": "default",
+          "fieldType": "TEXT",
+          "label": "Load Diffusion Model · weight_dtype",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "305::unet_name",
+          "nodeId": "305",
+          "fieldName": "unet_name",
+          "fieldValue": "rayKlein9bBFS_v1.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load Diffusion Model · unet_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "316::filename_prefix",
+          "nodeId": "316",
+          "fieldName": "filename_prefix",
+          "fieldValue": "ComfyUI",
+          "fieldType": "TEXT",
+          "label": "Save Image · filename_prefix",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::fit",
+          "nodeId": "319",
+          "fieldName": "fit",
+          "fieldValue": "letterbox",
+          "fieldType": "TEXT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · fit",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::aspect_ratio",
+          "nodeId": "319",
+          "fieldName": "aspect_ratio",
+          "fieldValue": "original",
+          "fieldType": "TEXT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · aspect_ratio",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::method",
+          "nodeId": "319",
+          "fieldName": "method",
+          "fieldValue": "lanczos",
+          "fieldType": "TEXT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · method",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::background_color",
+          "nodeId": "319",
+          "fieldName": "background_color",
+          "fieldValue": "#000000",
+          "fieldType": "TEXT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · background_color",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::round_to_multiple",
+          "nodeId": "319",
+          "fieldName": "round_to_multiple",
+          "fieldValue": "8",
+          "fieldType": "TEXT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · round_to_multiple",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::scale_to_side",
+          "nodeId": "319",
+          "fieldName": "scale_to_side",
+          "fieldValue": "longest",
+          "fieldType": "FLOAT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · scale_to_side",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::proportional_height",
+          "nodeId": "319",
+          "fieldName": "proportional_height",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · proportional_height",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::proportional_width",
+          "nodeId": "319",
+          "fieldName": "proportional_width",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · proportional_width",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "319::scale_to_length",
+          "nodeId": "319",
+          "fieldName": "scale_to_length",
+          "fieldValue": 2048,
+          "fieldType": "INT",
+          "label": "LayerUtility: ImageScaleByAspectRatio V2 · scale_to_length",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "309::vae_name",
+          "nodeId": "309",
+          "fieldName": "vae_name",
+          "fieldValue": "flux2-vae.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load VAE · vae_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        }
+      ],
+      "workflowJson": {
+        "304": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "lora_name": "一键通道图丨辅助PS魔棒选中材质_FLUX.2.safetensors",
+            "strength_model": 1,
+            "model": [
+              "305",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Load LoRA"
+          }
+        },
+        "305": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "weight_dtype": "default",
+            "unet_name": "rayKlein9bBFS_v1.safetensors"
+          },
+          "_meta": {
+            "title": "Load Diffusion Model"
+          }
+        },
+        "306": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "text": [
+              "335",
+              0
+            ],
+            "clip": [
+              "336",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+          }
+        },
+        "307": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "latent": [
+              "308",
+              0
+            ],
+            "conditioning": [
+              "306",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Set Reference Latent"
+          }
+        },
+        "308": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "319",
+              0
+            ],
+            "vae": [
+              "309",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "VAE Encode"
+          }
+        },
+        "309": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "flux2-vae.safetensors"
+          },
+          "_meta": {
+            "title": "Load VAE"
+          }
+        },
+        "311": {
+          "class_type": "KSampler",
+          "inputs": {
+            "scheduler": "simple",
+            "negative": [
+              "324",
+              0
+            ],
+            "denoise": 1,
+            "latent_image": [
+              "308",
+              0
+            ],
+            "seed": 1039940126025312,
+            "cfg": 1,
+            "sampler_name": "euler",
+            "model": [
+              "304",
+              0
+            ],
+            "positive": [
+              "307",
+              0
+            ],
+            "steps": 5
+          },
+          "_meta": {
+            "title": "KSampler"
+          }
+        },
+        "312": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "vae": [
+              "309",
+              0
+            ],
+            "samples": [
+              "311",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "VAE Decode"
+          }
+        },
+        "315": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "pasted/880168f34b98443df69672749da003705584bc77a37d242ae121233ed8c0fabf.png"
+          },
+          "_meta": {
+            "title": "Load Image"
+          }
+        },
+        "316": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "filename_prefix": "ComfyUI",
+            "images": [
+              "312",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Save Image"
+          }
+        },
+        "319": {
+          "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+          "inputs": {
+            "fit": "letterbox",
+            "aspect_ratio": "original",
+            "image": [
+              "315",
+              0
+            ],
+            "method": "lanczos",
+            "background_color": "#000000",
+            "round_to_multiple": "8",
+            "scale_to_side": "longest",
+            "proportional_height": 1,
+            "proportional_width": 1,
+            "scale_to_length": 2048
+          },
+          "_meta": {
+            "title": "LayerUtility: ImageScaleByAspectRatio V2"
+          }
+        },
+        "324": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "text": "ng_deepnegative_v1_75t,(badhandv4:1.2),EasyNegative,(worst quality:2),",
+            "clip": [
+              "336",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+          }
+        },
+        "335": {
+          "class_type": "CR Text",
+          "inputs": {
+            "text": "将这张图片转换为精确的材质分割图，图中每个不同的物体的区域都用完全均匀的纯色填充，相同材质要用完全相同的纯色填充，确保每个区域内无任何颜色变化，且与所有物体边界实现像素级精准对齐。但要注意带图案的材质不需要按图案区分而是让带图案的材质显示为一个颜色"
+          },
+          "_meta": {
+            "title": "文本"
+          }
+        },
+        "336": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+            "type": "flux2",
+            "device": "default"
+          },
+          "_meta": {
+            "title": "Load CLIP"
+          }
+        }
+      },
+      "contentHash": "7ddd051e08b06f90502c192528d0a7624fb723c5e8a769cd3652141babc6078b"
+    }
+  ]
+}
