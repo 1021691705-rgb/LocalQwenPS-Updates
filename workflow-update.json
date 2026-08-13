@@ -1,11 +1,442 @@
 {
   "format": "local-qwen-ps.workflow-update",
   "version": 1,
-  "revision": 1,
-  "publishedAt": "2026-07-29T07:37:31Z",
+  "revision": 2,
+  "publishedAt": "2026-08-13T02:09:28Z",
   "minPluginVersion": "0.7.5",
-  "notes": "首个在线工作流更新包：内置高清放大与生成通道。",
+  "notes": "0.8.9：发布完整 4 个 RunningHub 工作流目录，并修复批量输出尺寸、串行稳定性与停止恢复。",
   "workflows": [
+    {
+      "workflowId": "2016078729386139649",
+      "sourceWorkflowId": "2016078729386139649",
+      "title": "线稿生成",
+      "description": "",
+      "fields": [
+        {
+          "id": "99::sampler_name",
+          "nodeId": "99",
+          "fieldName": "sampler_name",
+          "fieldValue": "euler",
+          "fieldType": "TEXT",
+          "label": "KSamplerSelect · sampler_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "102::noise_seed",
+          "nodeId": "102",
+          "fieldName": "noise_seed",
+          "fieldValue": 705281044792583,
+          "fieldType": "INT",
+          "label": "RandomNoise · noise_seed",
+          "enabled": true,
+          "random_enabled": true,
+          "options": []
+        },
+        {
+          "id": "103::weight_dtype",
+          "nodeId": "103",
+          "fieldName": "weight_dtype",
+          "fieldValue": "default",
+          "fieldType": "TEXT",
+          "label": "Load Diffusion Model · weight_dtype",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "103::unet_name",
+          "nodeId": "103",
+          "fieldName": "unet_name",
+          "fieldValue": "flux-2-klein-9b.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load Diffusion Model · unet_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "104::clip_name",
+          "nodeId": "104",
+          "fieldName": "clip_name",
+          "fieldValue": "qwen_3_8b.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · clip_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "104::type",
+          "nodeId": "104",
+          "fieldName": "type",
+          "fieldValue": "flux2",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · type",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "104::device",
+          "nodeId": "104",
+          "fieldName": "device",
+          "fieldValue": "default",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "105::vae_name",
+          "nodeId": "105",
+          "fieldName": "vae_name",
+          "fieldValue": "flux2-vae.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load VAE · vae_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "106::batch_size",
+          "nodeId": "106",
+          "fieldName": "batch_size",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "Empty Flux 2 Latent · batch_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "117::text",
+          "nodeId": "117",
+          "fieldName": "text",
+          "fieldValue": "Convert the image into a simple black and white line drawing.",
+          "fieldType": "TEXT",
+          "label": "🔤 CR Text · text",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "9::filename_prefix",
+          "nodeId": "9",
+          "fieldName": "filename_prefix",
+          "fieldValue": "Flux2-Klein",
+          "fieldType": "TEXT",
+          "label": "Save Image · filename_prefix",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "108::cfg",
+          "nodeId": "108",
+          "fieldName": "cfg",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "CFGGuider · cfg",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "109::steps",
+          "nodeId": "109",
+          "fieldName": "steps",
+          "fieldValue": 8,
+          "fieldType": "INT",
+          "label": "Flux2Scheduler · steps",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "76::image",
+          "nodeId": "76",
+          "fieldName": "image",
+          "fieldValue": "70bb20e78937f2b0b9fba9d70b6c92fcb2c58be5240da4cac594b48403a7459e.jpg",
+          "fieldType": "IMAGE",
+          "label": "Load Image · image",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        }
+      ],
+      "workflowJson": {
+        "99": {
+          "class_type": "KSamplerSelect",
+          "inputs": {
+            "sampler_name": "euler"
+          },
+          "_meta": {
+            "title": "KSamplerSelect"
+          }
+        },
+        "110": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "text": [
+              "117",
+              0
+            ],
+            "clip": [
+              "104",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+          }
+        },
+        "100": {
+          "class_type": "SamplerCustomAdvanced",
+          "inputs": {
+            "guider": [
+              "108",
+              0
+            ],
+            "latent_image": [
+              "106",
+              0
+            ],
+            "noise": [
+              "102",
+              0
+            ],
+            "sigmas": [
+              "109",
+              0
+            ],
+            "sampler": [
+              "99",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "SamplerCustomAdvanced"
+          }
+        },
+        "111": {
+          "class_type": "ConditioningZeroOut",
+          "inputs": {
+            "conditioning": [
+              "110",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "ConditioningZeroOut"
+          }
+        },
+        "101": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "vae": [
+              "105",
+              0
+            ],
+            "samples": [
+              "100",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "VAE Decode"
+          }
+        },
+        "112": {
+          "class_type": "GetImageSize",
+          "inputs": {
+            "image": [
+              "76",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "GetImageSize"
+          }
+        },
+        "102": {
+          "class_type": "RandomNoise",
+          "inputs": {
+            "noise_seed": 705281044792583
+          },
+          "_meta": {
+            "title": "RandomNoise"
+          }
+        },
+        "103": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "weight_dtype": "default",
+            "unet_name": "flux-2-klein-9b.safetensors"
+          },
+          "_meta": {
+            "title": "Load Diffusion Model"
+          }
+        },
+        "114": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "latent": [
+              "115",
+              0
+            ],
+            "conditioning": [
+              "111",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "ReferenceLatent"
+          }
+        },
+        "104": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen_3_8b.safetensors",
+            "type": "flux2",
+            "device": "default"
+          },
+          "_meta": {
+            "title": "Load CLIP"
+          }
+        },
+        "115": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "76",
+              0
+            ],
+            "vae": [
+              "105",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "VAE Encode"
+          }
+        },
+        "105": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "flux2-vae.safetensors"
+          },
+          "_meta": {
+            "title": "Load VAE"
+          }
+        },
+        "116": {
+          "class_type": "ReferenceLatent",
+          "inputs": {
+            "latent": [
+              "115",
+              0
+            ],
+            "conditioning": [
+              "110",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "ReferenceLatent"
+          }
+        },
+        "106": {
+          "class_type": "EmptyFlux2LatentImage",
+          "inputs": {
+            "batch_size": 1,
+            "width": [
+              "112",
+              0
+            ],
+            "height": [
+              "112",
+              1
+            ]
+          },
+          "_meta": {
+            "title": "Empty Flux 2 Latent"
+          }
+        },
+        "117": {
+          "class_type": "CR Text",
+          "inputs": {
+            "text": "Convert the image into a simple black and white line drawing."
+          },
+          "_meta": {
+            "title": "🔤 CR Text"
+          }
+        },
+        "9": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "filename_prefix": "Flux2-Klein",
+            "images": [
+              "101",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Save Image"
+          }
+        },
+        "108": {
+          "class_type": "CFGGuider",
+          "inputs": {
+            "negative": [
+              "114",
+              0
+            ],
+            "cfg": 1,
+            "model": [
+              "103",
+              0
+            ],
+            "positive": [
+              "116",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "CFGGuider"
+          }
+        },
+        "109": {
+          "class_type": "Flux2Scheduler",
+          "inputs": {
+            "width": [
+              "112",
+              0
+            ],
+            "steps": 8,
+            "height": [
+              "112",
+              1
+            ]
+          },
+          "_meta": {
+            "title": "Flux2Scheduler"
+          }
+        },
+        "76": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "70bb20e78937f2b0b9fba9d70b6c92fcb2c58be5240da4cac594b48403a7459e.jpg"
+          },
+          "_meta": {
+            "title": "Load Image"
+          }
+        }
+      },
+      "contentHash": "933b0507ccbe03edc1fcc009f93e4492ddff859a5903c1b00f917a0a9baeea82"
+    },
     {
       "workflowId": "2081647850538229762",
       "sourceWorkflowId": "2081647850538229762",
@@ -2007,6 +2438,791 @@
         }
       },
       "contentHash": "7ddd051e08b06f90502c192528d0a7624fb723c5e8a769cd3652141babc6078b"
+    },
+    {
+      "workflowId": "2086642013583269889",
+      "sourceWorkflowId": "2086642013583269889",
+      "title": "洗图",
+      "description": "",
+      "fields": [
+        {
+          "id": "55::shift",
+          "nodeId": "55",
+          "fieldName": "shift",
+          "fieldValue": 8,
+          "fieldType": "INT",
+          "label": "ModelSamplingSD3 · shift",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "77::prompt",
+          "nodeId": "77",
+          "fieldName": "prompt",
+          "fieldValue": "Please provide a detailed description of this image. If any characters in the image are familiar to you, such as celebrities, movie characters, or animated figures, please directly use their names. The description should be as detailed as possible, but should not exceed 200 words.",
+          "fieldType": "TEXT",
+          "label": "Runninghub Captioner · prompt",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "56::weight_dtype",
+          "nodeId": "56",
+          "fieldName": "weight_dtype",
+          "fieldValue": "fp8_e4m3fn_fast",
+          "fieldType": "TEXT",
+          "label": "Load Diffusion Model · weight_dtype",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "56::unet_name",
+          "nodeId": "56",
+          "fieldName": "unet_name",
+          "fieldValue": "wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load Diffusion Model · unet_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "78::delimiter",
+          "nodeId": "78",
+          "fieldName": "delimiter",
+          "fieldValue": ", ",
+          "fieldType": "TEXT",
+          "label": "Text Concatenate · delimiter",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "78::clean_whitespace",
+          "nodeId": "78",
+          "fieldName": "clean_whitespace",
+          "fieldValue": "true",
+          "fieldType": "TEXT",
+          "label": "Text Concatenate · clean_whitespace",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "79::text",
+          "nodeId": "79",
+          "fieldName": "text",
+          "fieldValue": "early 2010s snapshot photo captured with a phone and uploaded to facebook, featuring dynamic natural lighting, and a neutral white color balance with washed out colors,asian girl,28-old-years,, The image showcases a cozy, well-organized living or study space with a centerpiece white storage cabinet. The cabinet stands tall, featuring two sections. The upper section has double glass-paneled doors with golden knobs, revealing shelves filled with books, decorative items, neatly stacked boxes, a pot with colorful flowers, and a plush teddy bear. The lower section has solid white doors with matching golden knobs, adding a clean and tidy look by concealing additional storage.\n\nThe background is a soft beige wall with a delicate black stripe running horizontally across, giving the room a balanced tone. A framed piece of abstract artwork hangs on the wall to the left of the cabinet, adding visual interest. Below the artwork, a tall and elegant black floor lamp with a classic beige lampshade stands out, casting a soft light and shadow on the wall.\n\nNatural light pours in from a large window with white sheer curtains on the right, creating an inviting ambiance. The room's floor is wooden with a textured beige and brown striped rug partially visible in the foreground. The overall setting feels warm, serene, and thoughtfully arranged, blending functionality with aesthetic appeal.",
+          "fieldType": "TEXT",
+          "label": "Show Any · text",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "38::clip_name",
+          "nodeId": "38",
+          "fieldName": "clip_name",
+          "fieldValue": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · clip_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "38::type",
+          "nodeId": "38",
+          "fieldName": "type",
+          "fieldValue": "wan",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · type",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "38::device",
+          "nodeId": "38",
+          "fieldName": "device",
+          "fieldValue": "default",
+          "fieldType": "TEXT",
+          "label": "Load CLIP · device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "39::vae_name",
+          "nodeId": "39",
+          "fieldName": "vae_name",
+          "fieldValue": "wan_2.1_vae_Comfy-Org.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load VAE · vae_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "125::scheduler",
+          "nodeId": "125",
+          "fieldName": "scheduler",
+          "fieldValue": "bong_tangent",
+          "fieldType": "TEXT",
+          "label": "KSampler · scheduler",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "125::denoise",
+          "nodeId": "125",
+          "fieldName": "denoise",
+          "fieldValue": 0.25000000000000006,
+          "fieldType": "FLOAT",
+          "label": "KSampler · denoise",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "125::seed",
+          "nodeId": "125",
+          "fieldName": "seed",
+          "fieldValue": 50985571477565,
+          "fieldType": "INT",
+          "label": "KSampler · seed",
+          "enabled": true,
+          "random_enabled": true,
+          "options": []
+        },
+        {
+          "id": "125::cfg",
+          "nodeId": "125",
+          "fieldName": "cfg",
+          "fieldValue": 1,
+          "fieldType": "INT",
+          "label": "KSampler · cfg",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "125::sampler_name",
+          "nodeId": "125",
+          "fieldName": "sampler_name",
+          "fieldValue": "res_2s",
+          "fieldType": "TEXT",
+          "label": "KSampler · sampler_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "125::steps",
+          "nodeId": "125",
+          "fieldName": "steps",
+          "fieldValue": 8,
+          "fieldType": "INT",
+          "label": "KSampler · steps",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "7::text",
+          "nodeId": "7",
+          "fieldName": "text",
+          "fieldValue": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+          "fieldType": "TEXT",
+          "label": "CLIP Text Encode (Prompt) · text",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "81::mode",
+          "nodeId": "81",
+          "fieldName": "mode",
+          "fieldValue": true,
+          "fieldType": "BOOLEAN",
+          "label": "Scale Down To Size · mode",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "81::size",
+          "nodeId": "81",
+          "fieldName": "size",
+          "fieldValue": 3854,
+          "fieldType": "INT",
+          "label": "Scale Down To Size · size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "82::filename_prefix",
+          "nodeId": "82",
+          "fieldName": "filename_prefix",
+          "fieldValue": "pl-wan2.2",
+          "fieldType": "TEXT",
+          "label": "Save Image · filename_prefix",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "93::lora_name",
+          "nodeId": "93",
+          "fieldName": "lora_name",
+          "fieldValue": "Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load LoRA · lora_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "93::strength_model",
+          "nodeId": "93",
+          "fieldName": "strength_model",
+          "fieldValue": 0.8000000000000002,
+          "fieldType": "FLOAT",
+          "label": "Load LoRA · strength_model",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "94::lora_name",
+          "nodeId": "94",
+          "fieldName": "lora_name",
+          "fieldValue": "Wan2.1_T2V_14B_FusionX_LoRA.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load LoRA · lora_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "94::strength_model",
+          "nodeId": "94",
+          "fieldName": "strength_model",
+          "fieldValue": 0.8000000000000002,
+          "fieldType": "FLOAT",
+          "label": "Load LoRA · strength_model",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "95::lora_name",
+          "nodeId": "95",
+          "fieldName": "lora_name",
+          "fieldValue": "WAN2.1_SmartphoneSnapshotPhotoReality_v1_by-AI_Characters.safetensors",
+          "fieldType": "TEXT",
+          "label": "Load LoRA · lora_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "95::strength_model",
+          "nodeId": "95",
+          "fieldName": "strength_model",
+          "fieldValue": 1.0000000000000002,
+          "fieldType": "FLOAT",
+          "label": "Load LoRA · strength_model",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "96::sage_attention",
+          "nodeId": "96",
+          "fieldName": "sage_attention",
+          "fieldValue": "auto",
+          "fieldType": "TEXT",
+          "label": "Patch Sage Attention KJ · sage_attention",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "96::allow_compile",
+          "nodeId": "96",
+          "fieldName": "allow_compile",
+          "fieldValue": false,
+          "fieldType": "BOOLEAN",
+          "label": "Patch Sage Attention KJ · allow_compile",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "64::text",
+          "nodeId": "64",
+          "fieldName": "text",
+          "fieldValue": "early 2010s snapshot photo captured with a phone and uploaded to facebook, featuring dynamic natural lighting, and a neutral white color balance with washed out colors,asian girl,28-old-years,",
+          "fieldType": "TEXT",
+          "label": "Text Multiline · text",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "97::mode",
+          "nodeId": "97",
+          "fieldName": "mode",
+          "fieldValue": "normal",
+          "fieldType": "TEXT",
+          "label": "📱 CR Simple Image Compare · mode",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "97::footer_height",
+          "nodeId": "97",
+          "fieldName": "footer_height",
+          "fieldValue": 100,
+          "fieldType": "INT",
+          "label": "📱 CR Simple Image Compare · footer_height",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "97::text1",
+          "nodeId": "97",
+          "fieldName": "text1",
+          "fieldValue": "原图",
+          "fieldType": "TEXT",
+          "label": "📱 CR Simple Image Compare · text1",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "97::text2",
+          "nodeId": "97",
+          "fieldName": "text2",
+          "fieldValue": "增强后",
+          "fieldType": "TEXT",
+          "label": "📱 CR Simple Image Compare · text2",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "97::font_size",
+          "nodeId": "97",
+          "fieldName": "font_size",
+          "fieldValue": 50,
+          "fieldType": "INT",
+          "label": "📱 CR Simple Image Compare · font_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "97::border_thickness",
+          "nodeId": "97",
+          "fieldName": "border_thickness",
+          "fieldValue": 20,
+          "fieldType": "INT",
+          "label": "📱 CR Simple Image Compare · border_thickness",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "97::font_name",
+          "nodeId": "97",
+          "fieldName": "font_name",
+          "fieldValue": "阿里妈妈数黑体 Bold.ttf",
+          "fieldType": "TEXT",
+          "label": "📱 CR Simple Image Compare · font_name",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "76::image",
+          "nodeId": "76",
+          "fieldName": "image",
+          "fieldValue": "pasted/585f9006fcf1d6381411e2270a21ef45100aa8b0e0d7705a04587e1ec87df667.png",
+          "fieldType": "IMAGE",
+          "label": "Load Image · image",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "98::filename_prefix",
+          "nodeId": "98",
+          "fieldName": "filename_prefix",
+          "fieldValue": "pl-wan2.2",
+          "fieldType": "TEXT",
+          "label": "Save Image · filename_prefix",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        }
+      ],
+      "workflowJson": {
+        "55": {
+          "class_type": "ModelSamplingSD3",
+          "inputs": {
+            "shift": 8,
+            "model": [
+              "96",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "ModelSamplingSD3"
+          }
+        },
+        "66": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "vae": [
+              "39",
+              0
+            ],
+            "samples": [
+              "125",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "VAE Decode"
+          }
+        },
+        "77": {
+          "class_type": "RH_Captioner",
+          "inputs": {
+            "prompt": "Please provide a detailed description of this image. If any characters in the image are familiar to you, such as celebrities, movie characters, or animated figures, please directly use their names. The description should be as detailed as possible, but should not exceed 200 words.",
+            "ref_image": [
+              "76",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Runninghub Captioner"
+          }
+        },
+        "56": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "weight_dtype": "fp8_e4m3fn_fast",
+            "unet_name": "wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors"
+          },
+          "_meta": {
+            "title": "Load Diffusion Model"
+          }
+        },
+        "78": {
+          "class_type": "Text Concatenate",
+          "inputs": {
+            "delimiter": ", ",
+            "text_a": [
+              "64",
+              0
+            ],
+            "clean_whitespace": "true",
+            "text_b": [
+              "77",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Text Concatenate"
+          }
+        },
+        "79": {
+          "class_type": "easy showAnything",
+          "inputs": {
+            "text": "early 2010s snapshot photo captured with a phone and uploaded to facebook, featuring dynamic natural lighting, and a neutral white color balance with washed out colors,asian girl,28-old-years,, The image showcases a cozy, well-organized living or study space with a centerpiece white storage cabinet. The cabinet stands tall, featuring two sections. The upper section has double glass-paneled doors with golden knobs, revealing shelves filled with books, decorative items, neatly stacked boxes, a pot with colorful flowers, and a plush teddy bear. The lower section has solid white doors with matching golden knobs, adding a clean and tidy look by concealing additional storage.\n\nThe background is a soft beige wall with a delicate black stripe running horizontally across, giving the room a balanced tone. A framed piece of abstract artwork hangs on the wall to the left of the cabinet, adding visual interest. Below the artwork, a tall and elegant black floor lamp with a classic beige lampshade stands out, casting a soft light and shadow on the wall.\n\nNatural light pours in from a large window with white sheer curtains on the right, creating an inviting ambiance. The room's floor is wooden with a textured beige and brown striped rug partially visible in the foreground. The overall setting feels warm, serene, and thoughtfully arranged, blending functionality with aesthetic appeal.",
+            "anything": [
+              "78",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Show Any"
+          }
+        },
+        "38": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+            "type": "wan",
+            "device": "default"
+          },
+          "_meta": {
+            "title": "Load CLIP"
+          }
+        },
+        "39": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "wan_2.1_vae_Comfy-Org.safetensors"
+          },
+          "_meta": {
+            "title": "Load VAE"
+          }
+        },
+        "125": {
+          "class_type": "KSampler",
+          "inputs": {
+            "scheduler": "bong_tangent",
+            "negative": [
+              "7",
+              0
+            ],
+            "denoise": 0.25000000000000006,
+            "latent_image": [
+              "83",
+              0
+            ],
+            "seed": 50985571477565,
+            "cfg": 1,
+            "sampler_name": "res_2s",
+            "model": [
+              "55",
+              0
+            ],
+            "positive": [
+              "6",
+              0
+            ],
+            "steps": 8
+          },
+          "_meta": {
+            "title": "KSampler"
+          }
+        },
+        "6": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "text": [
+              "78",
+              0
+            ],
+            "clip": [
+              "38",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+          }
+        },
+        "7": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+            "clip": [
+              "38",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "CLIP Text Encode (Prompt)"
+          }
+        },
+        "128": {
+          "class_type": "Image Comparer (rgthree)",
+          "inputs": {
+            "rgthree_comparer": {
+              "images": [
+                {
+                  "name": "A",
+                  "selected": true,
+                  "url": "/view?filename=rgthree.compare._temp_csnba_00001_rvhax_1786329141.jpg&type=temp&subfolder=&rand=0.1346081344876232&Rh-Comfy-Auth=eyJ1c2VySWQiOiIwYjJlZGQzZTE5YzM1MDk1MzNkZTdhZjZmZTg4OTAyYiIsInNpZ25FeHBpcmUiOjE3ODY5MzM2OTQwNzcsInRzIjoxNzg2MzI4ODk0MDc3LCJzaWduIjoiZmU5MmE1OWQ4NDNlMWY5NGZjMTk1N2UwOWE2YjQ3NjkifQ==&Rh-Identify=0b2edd3e19c3509533de7af6fe88902b"
+                },
+                {
+                  "name": "B",
+                  "selected": true,
+                  "url": "/view?filename=rgthree.compare._temp_csnba_00002_zqirv_1786329142.jpg&type=temp&subfolder=&rand=0.5703621052577997&Rh-Comfy-Auth=eyJ1c2VySWQiOiIwYjJlZGQzZTE5YzM1MDk1MzNkZTdhZjZmZTg4OTAyYiIsInNpZ25FeHBpcmUiOjE3ODY5MzM2OTQwNzcsInRzIjoxNzg2MzI4ODk0MDc3LCJzaWduIjoiZmU5MmE1OWQ4NDNlMWY5NGZjMTk1N2UwOWE2YjQ3NjkifQ==&Rh-Identify=0b2edd3e19c3509533de7af6fe88902b"
+                }
+              ]
+            },
+            "image_a": [
+              "76",
+              0
+            ],
+            "image_b": [
+              "66",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Image Comparer (rgthree)"
+          }
+        },
+        "81": {
+          "class_type": "ImageScaleDownToSize",
+          "inputs": {
+            "mode": true,
+            "images": [
+              "76",
+              0
+            ],
+            "size": 3854
+          },
+          "_meta": {
+            "title": "Scale Down To Size"
+          }
+        },
+        "82": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "filename_prefix": "pl-wan2.2",
+            "images": [
+              "66",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Save Image"
+          }
+        },
+        "93": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "lora_name": "Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",
+            "strength_model": 0.8000000000000002,
+            "model": [
+              "94",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Load LoRA"
+          }
+        },
+        "83": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "81",
+              0
+            ],
+            "vae": [
+              "39",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "VAE Encode"
+          }
+        },
+        "94": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "lora_name": "Wan2.1_T2V_14B_FusionX_LoRA.safetensors",
+            "strength_model": 0.8000000000000002,
+            "model": [
+              "56",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Load LoRA"
+          }
+        },
+        "95": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "lora_name": "WAN2.1_SmartphoneSnapshotPhotoReality_v1_by-AI_Characters.safetensors",
+            "strength_model": 1.0000000000000002,
+            "model": [
+              "93",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Load LoRA"
+          }
+        },
+        "96": {
+          "class_type": "PathchSageAttentionKJ",
+          "inputs": {
+            "sage_attention": "auto",
+            "model": [
+              "95",
+              0
+            ],
+            "allow_compile": false
+          },
+          "_meta": {
+            "title": "Patch Sage Attention KJ"
+          }
+        },
+        "64": {
+          "class_type": "Text Multiline",
+          "inputs": {
+            "text": "early 2010s snapshot photo captured with a phone and uploaded to facebook, featuring dynamic natural lighting, and a neutral white color balance with washed out colors,asian girl,28-old-years,"
+          },
+          "_meta": {
+            "title": "Text Multiline"
+          }
+        },
+        "97": {
+          "class_type": "CR Simple Image Compare",
+          "inputs": {
+            "mode": "normal",
+            "footer_height": 100,
+            "text1": "原图",
+            "text2": "增强后",
+            "font_size": 50,
+            "border_thickness": 20,
+            "image1": [
+              "81",
+              0
+            ],
+            "image2": [
+              "66",
+              0
+            ],
+            "font_name": "阿里妈妈数黑体 Bold.ttf"
+          },
+          "_meta": {
+            "title": "📱 CR Simple Image Compare"
+          }
+        },
+        "76": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "pasted/585f9006fcf1d6381411e2270a21ef45100aa8b0e0d7705a04587e1ec87df667.png"
+          },
+          "_meta": {
+            "title": "Load Image"
+          }
+        },
+        "98": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "filename_prefix": "pl-wan2.2",
+            "images": [
+              "97",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "Save Image"
+          }
+        }
+      },
+      "contentHash": "ca64558379c40c5da89e753e7de31e0d38b16d74db841dd9c262818ab9f77aee"
     }
   ]
 }
