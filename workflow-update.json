@@ -1,10 +1,10 @@
 {
   "format": "local-qwen-ps.workflow-update",
   "version": 1,
-  "revision": 2,
-  "publishedAt": "2026-08-13T02:09:28Z",
+  "revision": 3,
+  "publishedAt": "2026-10-23T07:06:46Z",
   "minPluginVersion": "0.7.5",
-  "notes": "0.8.9：发布完整 4 个 RunningHub 工作流目录，并修复批量输出尺寸、串行稳定性与停止恢复。",
+  "notes": "",
   "workflows": [
     {
       "workflowId": "2016078729386139649",
@@ -436,6 +436,481 @@
         }
       },
       "contentHash": "933b0507ccbe03edc1fcc009f93e4492ddff859a5903c1b00f917a0a9baeea82"
+    },
+    {
+      "workflowId": "2058824859437850625",
+      "sourceWorkflowId": "2058824859437850625",
+      "title": "SeedVR2 高清放大",
+      "description": "",
+      "fields": [
+        {
+          "id": "165::filename_prefix",
+          "nodeId": "165",
+          "fieldName": "filename_prefix",
+          "fieldValue": "ComfyUI",
+          "fieldType": "TEXT",
+          "label": "保存图像 · filename_prefix",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "187::image",
+          "nodeId": "187",
+          "fieldName": "image",
+          "fieldValue": "pasted/75f38df8f7fd6f254c3b8d2fd1c43519a311e8eaa325dc8859dedfee26cb663a.png",
+          "fieldType": "IMAGE",
+          "label": "加载图像 · image",
+          "enabled": true,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "160::attention_mode",
+          "nodeId": "160",
+          "fieldName": "attention_mode",
+          "fieldValue": "sdpa",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load DiT Model · attention_mode",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "160::swap_io_components",
+          "nodeId": "160",
+          "fieldName": "swap_io_components",
+          "fieldValue": true,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 (Down)Load DiT Model · swap_io_components",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "160::offload_device",
+          "nodeId": "160",
+          "fieldName": "offload_device",
+          "fieldValue": "cpu",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load DiT Model · offload_device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "160::model",
+          "nodeId": "160",
+          "fieldName": "model",
+          "fieldValue": "seedvr2_ema_3b_fp16.safetensors",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load DiT Model · model",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "160::device",
+          "nodeId": "160",
+          "fieldName": "device",
+          "fieldValue": "cuda:0",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load DiT Model · device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "160::blocks_to_swap",
+          "nodeId": "160",
+          "fieldName": "blocks_to_swap",
+          "fieldValue": 32,
+          "fieldType": "INT",
+          "label": "SeedVR2 (Down)Load DiT Model · blocks_to_swap",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::encode_tiled",
+          "nodeId": "161",
+          "fieldName": "encode_tiled",
+          "fieldValue": true,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 (Down)Load VAE Model · encode_tiled",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::encode_tile_overlap",
+          "nodeId": "161",
+          "fieldName": "encode_tile_overlap",
+          "fieldValue": 128,
+          "fieldType": "INT",
+          "label": "SeedVR2 (Down)Load VAE Model · encode_tile_overlap",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::encode_tile_size",
+          "nodeId": "161",
+          "fieldName": "encode_tile_size",
+          "fieldValue": 1024,
+          "fieldType": "INT",
+          "label": "SeedVR2 (Down)Load VAE Model · encode_tile_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::decode_tiled",
+          "nodeId": "161",
+          "fieldName": "decode_tiled",
+          "fieldValue": true,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 (Down)Load VAE Model · decode_tiled",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::decode_tile_size",
+          "nodeId": "161",
+          "fieldName": "decode_tile_size",
+          "fieldValue": 1024,
+          "fieldType": "INT",
+          "label": "SeedVR2 (Down)Load VAE Model · decode_tile_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::tile_debug",
+          "nodeId": "161",
+          "fieldName": "tile_debug",
+          "fieldValue": "false",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load VAE Model · tile_debug",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::offload_device",
+          "nodeId": "161",
+          "fieldName": "offload_device",
+          "fieldValue": "cpu",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load VAE Model · offload_device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::model",
+          "nodeId": "161",
+          "fieldName": "model",
+          "fieldValue": "ema_vae_fp16.safetensors",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load VAE Model · model",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::decode_tile_overlap",
+          "nodeId": "161",
+          "fieldName": "decode_tile_overlap",
+          "fieldValue": 128,
+          "fieldType": "INT",
+          "label": "SeedVR2 (Down)Load VAE Model · decode_tile_overlap",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "161::device",
+          "nodeId": "161",
+          "fieldName": "device",
+          "fieldValue": "cuda:0",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 (Down)Load VAE Model · device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "162::scale_by",
+          "nodeId": "162",
+          "fieldName": "scale_by",
+          "fieldValue": 0.5000000000000001,
+          "fieldType": "FLOAT",
+          "label": "图像按系数缩放 · scale_by",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "162::upscale_method",
+          "nodeId": "162",
+          "fieldName": "upscale_method",
+          "fieldValue": "lanczos",
+          "fieldType": "FLOAT",
+          "label": "图像按系数缩放 · upscale_method",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::batch_size",
+          "nodeId": "163",
+          "fieldName": "batch_size",
+          "fieldValue": 5,
+          "fieldType": "INT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · batch_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::seed",
+          "nodeId": "163",
+          "fieldName": "seed",
+          "fieldValue": 2541465446,
+          "fieldType": "INT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · seed",
+          "enabled": true,
+          "random_enabled": true,
+          "options": []
+        },
+        {
+          "id": "163::uniform_batch_size",
+          "nodeId": "163",
+          "fieldName": "uniform_batch_size",
+          "fieldValue": false,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · uniform_batch_size",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::latent_noise_scale",
+          "nodeId": "163",
+          "fieldName": "latent_noise_scale",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · latent_noise_scale",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::temporal_overlap",
+          "nodeId": "163",
+          "fieldName": "temporal_overlap",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · temporal_overlap",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::resolution",
+          "nodeId": "163",
+          "fieldName": "resolution",
+          "fieldValue": 2048,
+          "fieldType": "INT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · resolution",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::color_correction",
+          "nodeId": "163",
+          "fieldName": "color_correction",
+          "fieldValue": "lab",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · color_correction",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::enable_debug",
+          "nodeId": "163",
+          "fieldName": "enable_debug",
+          "fieldValue": false,
+          "fieldType": "BOOLEAN",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · enable_debug",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::prepend_frames",
+          "nodeId": "163",
+          "fieldName": "prepend_frames",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · prepend_frames",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::offload_device",
+          "nodeId": "163",
+          "fieldName": "offload_device",
+          "fieldValue": "cpu",
+          "fieldType": "TEXT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · offload_device",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::input_noise_scale",
+          "nodeId": "163",
+          "fieldName": "input_noise_scale",
+          "fieldValue": 0,
+          "fieldType": "INT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · input_noise_scale",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        },
+        {
+          "id": "163::max_resolution",
+          "nodeId": "163",
+          "fieldName": "max_resolution",
+          "fieldValue": 4096,
+          "fieldType": "INT",
+          "label": "SeedVR2 Video Upscaler (v2.5.15) · max_resolution",
+          "enabled": false,
+          "random_enabled": false,
+          "options": []
+        }
+      ],
+      "workflowJson": {
+        "165": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "filename_prefix": "ComfyUI",
+            "images": [
+              "163",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "保存图像"
+          }
+        },
+        "187": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "pasted/75f38df8f7fd6f254c3b8d2fd1c43519a311e8eaa325dc8859dedfee26cb663a.png"
+          },
+          "_meta": {
+            "title": "加载图像"
+          }
+        },
+        "190": {
+          "class_type": "PreviewImage",
+          "inputs": {
+            "images": [
+              "163",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "预览图像"
+          }
+        },
+        "160": {
+          "class_type": "SeedVR2LoadDiTModel",
+          "inputs": {
+            "attention_mode": "sdpa",
+            "swap_io_components": true,
+            "offload_device": "cpu",
+            "model": "seedvr2_ema_3b_fp16.safetensors",
+            "device": "cuda:0",
+            "blocks_to_swap": 32
+          },
+          "_meta": {
+            "title": "SeedVR2 (Down)Load DiT Model"
+          }
+        },
+        "161": {
+          "class_type": "SeedVR2LoadVAEModel",
+          "inputs": {
+            "encode_tiled": true,
+            "encode_tile_overlap": 128,
+            "encode_tile_size": 1024,
+            "decode_tiled": true,
+            "decode_tile_size": 1024,
+            "tile_debug": "false",
+            "offload_device": "cpu",
+            "model": "ema_vae_fp16.safetensors",
+            "decode_tile_overlap": 128,
+            "device": "cuda:0"
+          },
+          "_meta": {
+            "title": "SeedVR2 (Down)Load VAE Model"
+          }
+        },
+        "162": {
+          "class_type": "ImageScaleBy",
+          "inputs": {
+            "image": [
+              "187",
+              0
+            ],
+            "scale_by": 0.5000000000000001,
+            "upscale_method": "lanczos"
+          },
+          "_meta": {
+            "title": "图像按系数缩放"
+          }
+        },
+        "163": {
+          "class_type": "SeedVR2VideoUpscaler",
+          "inputs": {
+            "image": [
+              "162",
+              0
+            ],
+            "batch_size": 5,
+            "seed": 2541465446,
+            "uniform_batch_size": false,
+            "latent_noise_scale": 0,
+            "temporal_overlap": 0,
+            "resolution": 2048,
+            "dit": [
+              "160",
+              0
+            ],
+            "color_correction": "lab",
+            "enable_debug": false,
+            "prepend_frames": 0,
+            "offload_device": "cpu",
+            "input_noise_scale": 0,
+            "vae": [
+              "161",
+              0
+            ],
+            "max_resolution": 4096
+          },
+          "_meta": {
+            "title": "SeedVR2 Video Upscaler (v2.5.15)"
+          }
+        }
+      },
+      "contentHash": "adb9ccd29742879c943838f05c0e7f0d6efce5e82267661c9845d9b3f8b207b1"
     },
     {
       "workflowId": "2081647850538229762",
